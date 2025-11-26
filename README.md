@@ -40,6 +40,24 @@
 
 DroidRun is a powerful framework for controlling Android and iOS devices through LLM agents. It allows you to automate device interactions using natural language commands. [Checkout our benchmark results](https://droidrun.ai/benchmark)
 
+## ⚡ Performance & Architecture
+
+**Code Execution**: Runs on your **host machine** (computer), NOT on Android device
+- LLM processing happens on your computer (fast with local Ollama or cloud APIs)
+- Python agent code executes on host machine
+- Only a lightweight Portal APK runs on Android device
+
+**Device Communication**: Fast ADB-based communication
+- **TCP Mode** (default): Direct HTTP communication via port forwarding - **Fast** (~50-100ms per action)
+- **Content Provider Mode**: ADB shell commands - **Moderate** (~200-500ms per action)
+- Portal app on Android provides UI state and executes actions natively
+
+**Speed Characteristics**:
+- Action execution: ~100-300ms per tap/swipe (depends on device)
+- UI state retrieval: ~200-500ms (screenshot + accessibility tree)
+- LLM response: Varies by model (local Ollama: 1-5s, cloud APIs: 2-10s)
+- Total per step: ~2-15 seconds (depending on LLM and task complexity)
+
 ## Why Droidrun?
 
 - 🤖 Control Android and iOS devices with natural language commands
