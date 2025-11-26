@@ -4,8 +4,7 @@ Simple workflow to open an app based on a description.
 
 import json
 
-from workflows import Context, Workflow, step
-from workflows.events import StartEvent, StopEvent
+from llama_index.core.workflow import Context, StartEvent, StopEvent, Workflow, step
 
 from droidrun.tools.tools import Tools
 

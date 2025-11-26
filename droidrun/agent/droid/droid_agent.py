@@ -8,14 +8,12 @@ Architecture:
 """
 
 import logging
-from typing import TYPE_CHECKING, Type, Awaitable, Union
+from typing import TYPE_CHECKING, Type, Awaitable, Union, Any
 
 from pydantic import BaseModel
 from llama_index.core.llms.llm import LLM
 from llama_index.core.workflow import Context, StartEvent, StopEvent, Workflow, step
-
-from workflows.events import Event
-from workflows.handler import WorkflowHandler
+from llama_index.core.workflow import Event
 from droidrun.agent.codeact import CodeActAgent
 from droidrun.agent.codeact.events import TaskExecutionResultEvent
 from droidrun.agent.common.events import MacroEvent, RecordUIStateEvent, ScreenshotEvent
@@ -329,7 +327,7 @@ class DroidAgent(Workflow):
 
         logger.info("✅ DroidAgent initialized successfully.")
 
-    def run(self, *args, **kwargs) -> Awaitable[ResultEvent] | WorkflowHandler:
+    def run(self, *args, **kwargs) -> Any:
         apply_session_context()
         handler = super().run(*args, **kwargs)  # type: ignore[assignment]
         return handler

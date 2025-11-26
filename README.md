@@ -49,6 +49,7 @@ DroidRun is a powerful framework for controlling Android and iOS devices through
 - 🐍 Extendable Python API for custom automations
 - 📸 Screenshot analysis for visual understanding of the device
 - 🫆 Execution tracing with Arize Phoenix
+- 🔐 **No API Keys Needed**: Works directly with Android apps (Google Sheets, Calendar, etc.) - perfect for recruitment automation
 
 ## 📦 Installation
 
@@ -87,6 +88,35 @@ Read on how to get droidrun up and running within seconds in [our docs](https://
 - Automating repetitive tasks on mobile devices
 - Remote assistance for less technical users
 - Exploring mobile UI with natural language commands
+- **Recruitment Agent**: Automate candidate search, shortlisting, and interview scheduling using Google Sheets and local LLMs (no API keys needed when using Android apps directly)
+
+## 🎯 Recruitment Agent Use Case
+
+DroidRun can be configured as an autonomous recruitment agent that:
+
+- **Searches and Shortlists Candidates**: Uses Android Google Sheets app to read candidate criteria and filter candidates based on your requirements
+- **Schedules Interviews**: Automatically lines up interviews by interacting with calendar and communication apps
+- **Works with Local LLMs**: Uses Ollama or other local LLM providers, bypassing the need for API keys when working directly with Android apps
+- **No API Keys Required**: Since it interacts with Android apps directly (Google Sheets, Calendar, Email, etc.), you don't need Google Sheets API keys or other service credentials
+
+### Example: Recruitment Agent Setup
+
+```bash
+# Using local LLM (Ollama) for recruitment tasks
+droidrun "Search Google Sheets for candidates matching Python developer with 3+ years experience, shortlist top 5, and schedule interviews for next week" \
+  --provider Ollama \
+  --model llama3.2 \
+  --reasoning \
+  --vision \
+  --steps 30
+```
+
+The agent will:
+1. Open Google Sheets app on your Android device
+2. Read and analyze candidate data based on your criteria
+3. Shortlist candidates according to your requirements
+4. Open calendar/email apps to schedule interviews
+5. Complete the entire workflow autonomously
 
 ## 👥 Contributing
 
